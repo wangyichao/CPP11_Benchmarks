@@ -27,3 +27,12 @@ echo ICC:
 clang++ -std=c++11 -O3 loop.cpp -o O3/clang-o3
 echo LLVM:
 ./O3/clang-o3
+
+echo ---------------------------------------
+echo Of opt
+echo 
+g++ -std=c++11 -Ofast loop.cpp -o Of/gcc-of
+echo GCC:
+./Of/gcc-of
+
+

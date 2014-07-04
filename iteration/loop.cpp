@@ -1,9 +1,16 @@
 #include <iostream>
 #include <iomanip>
-#include <vector>
 #include <string>
 #include <algorithm>
 #include <functional>
+
+#include <vector>
+#include <array>
+#include <list>
+#include <set>
+
+#include <fstream>
+/* #include <omp.h> */
 
 /******* Function Performance Profiling ***********/
 #include <chrono>
@@ -87,33 +94,66 @@ namespace chrono_test {
 
 /* for_each: */
 namespace for_each_test {
-	std::vector<int> v(1000);
+	std::vector<int> v(100);
+	/* std::array<int,10000> v; */
+	/* int v[100]; */
+	/* std::list<int> v(100); */
+	/* std::set<int> v; */
+	/* temp is a variable to store the result by iteration to avoid GCC -O3 eliminate computation on sum */
+	int temp;
+	/* initilize the container */
+	/* void init(void) { */
+	/* 	for (int j=0; j<10000; j++) */
+	/* 		v[j]=j+1; */
+	/* } */ 
+	void init(void) {
+		for (int j=1; j<=100; j++)
+			v.push_back(j);
+	}
 	int for_size(void) {
 		int sum=0;
 		for (unsigned int i=0;i<v.size();i++) sum+=v[i];
+		temp = sum;
 		return sum;
 	}
 	int for_iterator(void) {
 		int sum=0;
 		for (auto i=v.begin();i!=v.end();++i) sum+=*i;
+		temp = sum;
 		return sum;
 	}
 	int for_each(void) {
 		int sum=0;
 		std::for_each(v.begin(),v.end(),[&](int n){sum+=n;});
+		temp = sum;
 		return sum;
 	}
 	int for_range(void) {
 		int sum=0;
 		for (auto i : v) { sum+=i; }
+		temp = sum;
 		return sum;
 	}
 
 	void time() {
+		init();
+		/* double start; */
 		print_time("for int to size",for_size);
-		print_time("for range (i v)",for_size);
+		/* start = omp_get_wtime(); */
+		/* for_size(); */
+		/* std::cout<<"by omp_get_wtime(): "<<omp_get_wtime()-start<<std::endl; */
 		print_time("for iterator ++",for_iterator);
+		/* start = omp_get_wtime(); */
+		/* for_iterator(); */
+		/* std::cout<<"by omp_get_wtime(): "<<omp_get_wtime()-start<<std::endl; */
 		print_time("for_each lambda",for_each);
+		/* start = omp_get_wtime(); */
+		/* for_each(); */
+		/* std::cout<<"by omp_get_wtime(): "<<omp_get_wtime()-start<<std::endl; */
+		print_time("for range (i v)",for_range);
+		/* start = omp_get_wtime(); */
+		/* for_range(); */
+		/* std::cout<<"by omp_get_wtime(): "<<omp_get_wtime()-start<<std::endl; */
 	}
 };
 
