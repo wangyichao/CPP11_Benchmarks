@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir bin
 mkdir bin/O2
 mkdir bin/O3
 mkdir bin/Of
