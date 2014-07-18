@@ -12,6 +12,7 @@
 #include <omp.h>
 #include <chrono>
 #include <sched.h>
+#include <errno.h>
 
 extern "C"
 {
@@ -24,6 +25,16 @@ extern "C"
 #define CYCLES_LOOP_SIZE 1000
 
 volatile int var;
+
+void microseconds_sleep(unsigned long uSec){
+    struct timeval tv;
+    tv.tv_sec=uSec/1000000;
+    tv.tv_usec=uSec%1000000;
+    int err;
+    do{
+        err=select(0,NULL,NULL,NULL,&tv);
+    }while(err<0 && errno==EINTR);
+}
 
 void inline measured_loop(unsigned int cycles) { 
 	int k; 
@@ -69,12 +80,12 @@ void TestCycles(char* argv){
 	struct timeval start, end;
 
 	for (i=10; i<CYCLES_LOOP_SIZE; i++) {
-			gettimeofday(&start, NULL);
-			measured_loop(i);
-			gettimeofday(&end, NULL);
-			int elapsed = 1000 * (end.tv_usec-start.tv_usec);
-
-			cycles_elapsed.insert(std::pair<int, int>(i, elapsed));
+		gettimeofday(&start, NULL);
+		microseconds_sleep(i);
+		/* measured_loop(i); */
+		gettimeofday(&end, NULL);
+		int elapsed = 1000 * (end.tv_usec-start.tv_usec);
+		cycles_elapsed.insert(std::pair<int, int>(i, elapsed));
 	}
 	std::ofstream file;
 	std::string path = "plot/";
@@ -111,12 +122,12 @@ void TestCycles(char* argv) {
 	double start, end;
 
 	for (i=10; i<CYCLES_LOOP_SIZE; i++) {
-			start = omp_get_wtime( );
-			measured_loop(i);
-			end = omp_get_wtime( );
-			int elapsed = 1000000000*(end - start);
-
-			cycles_elapsed.insert(std::pair<int, int>(i, elapsed));
+		start = omp_get_wtime( );
+		microseconds_sleep(i);
+		/* measured_loop(i); */
+		end = omp_get_wtime( );
+		int elapsed = 1000000000*(end - start);
+		cycles_elapsed.insert(std::pair<int, int>(i, elapsed));
 	}
 	std::ofstream file;
 	std::string path = "plot/";
@@ -195,23 +206,24 @@ void inline TestCycles(char* argv) {
 			"RDTSC\n\t"::: "%rax", "%rbx", "%rcx", "%rdx"); 
  
 	for (i=10; i<CYCLES_LOOP_SIZE; i++) {
-			asm volatile ("CPUID\n\t" 
+		asm volatile ("CPUID\n\t" 
 					"RDTSC\n\t" 
 					"mov %%edx, %0\n\t" 
 					"mov %%eax, %1\n\t": "=r" (cycles_high), "=r" 
 					(cycles_low):: "%rax", "%rbx", "%rcx", "%rdx"); 
-			measured_loop(i);
-			asm volatile("CPUID\n\t" 
+		microseconds_sleep(i);
+			/* measured_loop(i); */
+		asm volatile("CPUID\n\t" 
 					"RDTSC\n\t" 
 					"mov %%edx, %0\n\t"
 					"mov %%eax, %1\n\t": "=r" (cycles_high1), "=r" 
 					(cycles_low1):: "%rax", "%rbx", "%rcx", "%rdx"); 
 
-			start = ( ((uint64_t)cycles_high << 32) | cycles_low ); 
-			end = ( ((uint64_t)cycles_high1 << 32) | cycles_low1 ); 
-			uint64_t elapsed = end - start;
+		start = ( ((uint64_t)cycles_high << 32) | cycles_low ); 
+		end = ( ((uint64_t)cycles_high1 << 32) | cycles_low1 ); 
+		uint64_t elapsed = (end - start) / CPU_NOMINAL_FREQ;
 
-			cycles_elapsed.insert(std::pair<int, int>(i, elapsed));
+		cycles_elapsed.insert(std::pair<int, int>(i, elapsed));
 	} 
 	std::ofstream file;
 	std::string path = "plot/";
@@ -246,7 +258,8 @@ void TestCycles(char* argv) {
 	for (i=10; i<CYCLES_LOOP_SIZE; i++) {
 
 		auto start = std::chrono::steady_clock::now();
-		measured_loop(i);
+		microseconds_sleep(i);
+		/* measured_loop(i); */
 		auto end = std::chrono::steady_clock::now();
 		int elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
 		cycles_elapsed.insert(std::pair<int, int>(i, elapsed));
@@ -298,7 +311,8 @@ namespace PMU {
 		for (i=10; i<CYCLES_LOOP_SIZE; i++) {
 
 			start_cpu(c);
-			measured_loop(i);
+			/* measured_loop(i); */
+			microseconds_sleep(i);
 			stop_cpu(c);
 		
 			counter_struct * counts = read_cpu(c);
