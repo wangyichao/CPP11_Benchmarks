@@ -178,7 +178,7 @@ void inline TestOverhead() {
 
 			start = ( ((uint64_t)cycles_high << 32) | cycles_low ); 
 			end = ( ((uint64_t)cycles_high1 << 32) | cycles_low1 ); 
-			int elapsed = end - start;
+			uint64_t elapsed = (end - start) / CPU_NOMINAL_FREQ;
 			overhead.push_back(elapsed); 
 	} 
 	statics("RDTSCP", overhead);
@@ -285,17 +285,21 @@ namespace PMU {
 		char *events[] = {"-e", "UNHALTED_REFERENCE_CYCLES"};
 		set_options(2, events);
 		init();
-		int c = sched_getcpu();
 
 		for (i=0; i<OVERHEAD_LOOP_SIZE; i++) {
 			
+			microseconds_sleep(i);
+			int c = sched_getcpu();
 			start_cpu(c);
 			stop_cpu(c);
 		
 			counter_struct * counts = read_cpu(c);
-			int elapsed = counts[0].delta/CPU_NOMINAL_FREQ;
+			double result = (counts[0].delta/CPU_NOMINAL_FREQ);
+			int elapsed = result * 1000;
 			overhead.push_back(elapsed);
 		}
+
+		terminate();
 		statics("PMU", overhead);
 	}
 
@@ -306,19 +310,23 @@ namespace PMU {
 		char *events[] = {"-e", "UNHALTED_REFERENCE_CYCLES"};
 		set_options(2, events);
 		init();
-		int c = sched_getcpu();
-		
+
 		for (i=10; i<CYCLES_LOOP_SIZE; i++) {
 
+			microseconds_sleep(i);
+			int c = sched_getcpu();
 			start_cpu(c);
 			/* measured_loop(i); */
-			microseconds_sleep(i);
+			microseconds_sleep(1000);
 			stop_cpu(c);
 		
 			counter_struct * counts = read_cpu(c);
-			int elapsed = counts[0].delta/CPU_NOMINAL_FREQ;
+			double result = (counts[0].delta/CPU_NOMINAL_FREQ);
+			int elapsed = result;
 			cycles_elapsed.insert(std::pair<int, int>(i, elapsed));
 		}
+	
+		terminate();
 		std::ofstream file;
 		std::string path = "plot/";
 		path += argv;
