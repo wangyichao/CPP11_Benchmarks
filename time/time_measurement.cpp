@@ -288,7 +288,6 @@ namespace PMU {
 
 		for (i=0; i<OVERHEAD_LOOP_SIZE; i++) {
 			
-			microseconds_sleep(i);
 			int c = sched_getcpu();
 			start_cpu(c);
 			stop_cpu(c);
