@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir bin
+mkdir perf_data
 
 # Compile loop benchmark
 

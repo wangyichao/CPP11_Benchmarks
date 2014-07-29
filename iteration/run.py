@@ -3,19 +3,17 @@
 import csv
 import sys
 import os
- 
-# os.popen("sh compile.sh")
 
 # Run loop iteration benchmarks
-loop_gcc_o2 = os.popen("./bin/loop/gcc-o2").read()
-loop_gcc_o3 = os.popen("./bin/loop/gcc-o3").read()
-loop_gcc_of = os.popen("./bin/loop/gcc-of").read()
-loop_icc_o2 = os.popen("./bin/loop/icc-o2").read()
-loop_icc_o3 = os.popen("./bin/loop/icc-o3").read()
-loop_icc_of = os.popen("./bin/loop/icc-of").read()
-loop_llvm_o2 = os.popen("./bin/loop/llvm-o2").read()
-loop_llvm_o3 = os.popen("./bin/loop/llvm-o3").read()
-loop_llvm_of = os.popen("./bin/loop/llvm-of").read()
+loop_gcc_o2 = os.popen("./bin/gcc-o2 all").read()
+loop_gcc_o3 = os.popen("./bin/gcc-o3 all").read()
+loop_gcc_of = os.popen("./bin/gcc-of all").read()
+loop_icc_o2 = os.popen("./bin/icc-o2 all").read()
+loop_icc_o3 = os.popen("./bin/icc-o3 all").read()
+loop_icc_of = os.popen("./bin/icc-of all").read()
+loop_llvm_o2 = os.popen("./bin/llvm-o2 all").read()
+loop_llvm_o3 = os.popen("./bin/llvm-o3 all").read()
+loop_llvm_of = os.popen("./bin/llvm-of all").read()
 
 attribute = [
 	("Container","Size","Syntax","GCC-O2","GCC-O3","GCC-Of","ICC-O2","ICC-O3","ICC-Of","LLVM-O2","LLVM-O3","LLVM-Of")
@@ -51,3 +49,23 @@ for i in range(len(gcc_o2_line)-1):
 	result.append(llvm_o3_line[i].split(" ")[3])
 	result.append(llvm_of_line[i].split(" ")[3])
 	writer.writerow(result)
+
+perf_ins = "perf stat -B -e cache-references,cache-misses,cycles,instructions,branches --pfm-events LLC_MISSES"
+os.popen(perf_ins + " ./bin/gcc-of vector index > perf_data/vector_index 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of vector interator > perf_data/vector_iterator 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of vector each > perf_data/vector_each 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of vector range > perf_data/vector_range 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of stdarray index > perf_data/stdarray_index 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of stdarray interator > perf_data/stdarray_iterator 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of stdarray each > perf_data/stdarray_each 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of stdarray range > perf_data/stdarray_range 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of carray index > perf_data/carray_index 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of carray interator > perf_data/carray_iterator 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of carray each > perf_data/carray_each 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of carray range > perf_data/carray_range 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of set interator > perf_data/set_iterator 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of set each > perf_data/set_each 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of set range > perf_data/set_range 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of list interator > perf_data/list_iterator 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of list each > perf_data/list_each 2>&1")
+os.popen(perf_ins + " ./bin/gcc-of list range > perf_data/list_range 2>&1")
