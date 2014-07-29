@@ -33,33 +33,33 @@ void time_and_print(testfun fn, std::string name, size_t size) {
 }
 
 namespace VectorTest {
-	std::vector<int> v;
-	int temp;
+	std::vector<double> v;
+	double temp;
 
 	void init(size_t size) {
 		for (int j=1; j<=size; j++)
 			v.push_back(j);
 	}
-	int for_size(void) {
-		int sum=0;
+	double for_size(void) {
+		double sum=0;
 		for (unsigned int i=0;i<v.size();i++) sum+=v[i];
 		temp = sum;
 		return sum;
 	}
-	int for_iterator(void) {
-		int sum=0;
+	double for_iterator(void) {
+		double sum=0;
 		for (auto i=v.begin();i!=v.end();++i) sum+=*i;
 		temp = sum;
 		return sum;
 	}
-	int for_each(void) {
-		int sum=0;
+	double for_each(void) {
+		double sum=0;
 		std::for_each(v.begin(),v.end(),[&](int n){sum+=n;});
 		temp = sum;
 		return sum;
 	}
-	int for_range(void) {
-		int sum=0;
+	double for_range(void) {
+		double sum=0;
 		for (auto i : v) { sum+=i; }
 		temp = sum;
 		return sum;
@@ -90,38 +90,38 @@ namespace VectorTest {
 
 	void range() {
 		init(10000);
-		time_and_print(testfun(for_range), "std::vector C++11_range", 10000)	;
+		time_and_print(testfun(for_range), "std::vector C++11_range", 10000);
 	}
 }
 
 namespace StdArray100Test {
-	std::array<int,100> v;
+	std::array<double,100> v;
 	size_t size = 100;
-	int temp;
+	double temp;
 	void init() {
 		for (int j=1; j<=size; j++)
 			v[j] = j+1;
 	}
-	int for_size(void) {
-		int sum=0;
+	double for_size(void) {
+		double sum=0;
 		for (unsigned int i=0;i<v.size();i++) sum+=v[i];
 		temp = sum;
 		return sum;
 	}
-	int for_iterator(void) {
-		int sum=0;
+	double for_iterator(void) {
+		double sum=0;
 		for (auto i=v.begin();i!=v.end();++i) sum+=*i;
 		temp = sum;
 		return sum;
 	}
-	int for_each(void) {
-		int sum=0;
+	double for_each(void) {
+		double sum=0;
 		std::for_each(v.begin(),v.end(),[&](int n){sum+=n;});
 		temp = sum;
 		return sum;
 	}
-	int for_range(void) {
-		int sum=0;
+	double for_range(void) {
+		double sum=0;
 		for (auto i : v) { sum+=i; }
 		temp = sum;
 		return sum;
@@ -139,31 +139,31 @@ namespace StdArray100Test {
 namespace StdArray10000Test {
 	std::array<int,10000> v;
 	size_t size = 10000;
-	int temp;
+	double temp;
 	void init() {
 		for (int j=1; j<=size; j++)
 			v[j] = j+1;
 	}
-	int for_size(void) {
-		int sum=0;
+	double for_size(void) {
+		double sum=0;
 		for (unsigned int i=0;i<v.size();i++) sum+=v[i];
 		temp = sum;
 		return sum;
 	}
-	int for_iterator(void) {
-		int sum=0;
+	double for_iterator(void) {
+		double sum=0;
 		for (auto i=v.begin();i!=v.end();++i) sum+=*i;
 		temp = sum;
 		return sum;
 	}
-	int for_each(void) {
-		int sum=0;
+	double for_each(void) {
+		double sum=0;
 		std::for_each(v.begin(),v.end(),[&](int n){sum+=n;});
 		temp = sum;
 		return sum;
 	}
-	int for_range(void) {
-		int sum=0;
+	double for_range(void) {
+		double sum=0;
 		for (auto i : v) { sum+=i; }
 		temp = sum;
 		return sum;
@@ -199,33 +199,33 @@ namespace StdArray10000Test {
 }
 
 namespace CArray100Test {
- 	int v[100];
+ 	double v[100];
  	size_t size = 100;
-	int temp;
+	double temp;
 	void init() {
 		for (int j=1; j<=100; j++)
 			v[j] = j+1;
 	}
-	int for_size(void) {
-		int sum=0;
+	double for_size(void) {
+		double sum=0;
 		for (unsigned int i=0;i<100;++i) sum+=v[i];
 		temp = sum;
 		return sum;
 	}
-	int for_iterator(void) {
-		int sum=0;
+	double for_iterator(void) {
+		double sum=0;
 		for (auto i=v;i!=v+100;++i) sum+=*i;
 		temp = sum;
 		return sum;
 	}
-	int for_each(void) {
-		int sum=0;
+	double for_each(void) {
+		double sum=0;
 		std::for_each(v,v+100,[&](int n){sum+=n;});
 		temp = sum;
 		return sum;
 	}
-	int for_range(void) {
-		int sum=0;
+	double for_range(void) {
+		double sum=0;
 		for (auto i : v) { sum+=i; }
 		temp = sum;
 		return sum;
@@ -241,33 +241,33 @@ namespace CArray100Test {
 }
 
 namespace CArray10000Test {
- 	int v[10000];
+ 	double v[10000];
  	size_t size = 10000;
-	int temp;
+	double temp;
 	void init() {
 		for (int j=1; j<=size; j++)
 			v[j] = j+1;
 	}
-	int for_size(void) {
-		int sum=0;
+	double for_size(void) {
+		double sum=0;
 		for (unsigned int i=0;i<size;++i) sum+=v[i];
 		temp = sum;
 		return sum;
 	}
-	int for_iterator(void) {
-		int sum=0;
+	double for_iterator(void) {
+		double sum=0;
 		for (auto i=v;i!=v+size;++i) sum+=*i;
 		temp = sum;
 		return sum;
 	}
-	int for_each(void) {
-		int sum=0;
+	double for_each(void) {
+		double sum=0;
 		std::for_each(v,v+size,[&](int n){sum+=n;});
 		temp = sum;
 		return sum;
 	}
-	int for_range(void) {
-		int sum=0;
+	double for_range(void) {
+		double sum=0;
 		for (auto i : v) { sum+=i; }
 		temp = sum;
 		return sum;
@@ -303,26 +303,26 @@ namespace CArray10000Test {
 }
 
 namespace SetTest {
- 	std::set<int> v;
-	int temp;
+ 	std::set<double> v;
+	double temp;
 	void init(size_t size) {
 		for (int j=1; j<=size; j++)
 			v.insert(j+1);
 	}
-	int for_iterator(void) {
-		int sum=0;
+	double for_iterator(void) {
+		double sum=0;
 		for (auto i=v.begin();i!=v.end();++i) sum+=*i;
 		temp = sum;
 		return sum;
 	}
-	int for_each(void) {
-		int sum=0;
+	double for_each(void) {
+		double sum=0;
 		std::for_each(v.begin(),v.end(),[&](int n){sum+=n;});
 		temp = sum;
 		return sum;
 	}
-	int for_range(void) {
-		int sum=0;
+	double for_range(void) {
+		double sum=0;
 		for (auto i : v) { sum+=i; }
 		temp = sum;
 		return sum;
@@ -352,28 +352,28 @@ namespace SetTest {
 }
 
 namespace ListTest {
-	std::list<int> v;
-	int temp;
+	std::list<double> v;
+	double temp;
 
 	void init(size_t size) {
 		for (int j=1; j<=size; j++)
 			v.push_back(j);
 	}
 	
-	int for_iterator(void) {
-		int sum=0;
+	double for_iterator(void) {
+		double sum=0;
 		for (auto i=v.begin();i!=v.end();++i) sum+=*i;
 		temp = sum;
 		return sum;
 	}
-	int for_each(void) {
-		int sum=0;
+	double for_each(void) {
+		double sum=0;
 		std::for_each(v.begin(),v.end(),[&](int n){sum+=n;});
 		temp = sum;
 		return sum;
 	}
-	int for_range(void) {
-		int sum=0;
+	double for_range(void) {
+		double sum=0;
 		for (auto i : v) { sum+=i; }
 		temp = sum;
 		return sum;

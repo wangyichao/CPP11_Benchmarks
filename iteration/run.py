@@ -50,22 +50,16 @@ for i in range(len(gcc_o2_line)-1):
 	result.append(llvm_of_line[i].split(" ")[3])
 	writer.writerow(result)
 
-perf_ins = "perf stat -B -e cache-references,cache-misses,cycles,instructions,branches --pfm-events LLC_MISSES"
-os.popen(perf_ins + " ./bin/gcc-of vector index > perf_data/vector_index 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of vector interator > perf_data/vector_iterator 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of vector each > perf_data/vector_each 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of vector range > perf_data/vector_range 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of stdarray index > perf_data/stdarray_index 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of stdarray interator > perf_data/stdarray_iterator 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of stdarray each > perf_data/stdarray_each 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of stdarray range > perf_data/stdarray_range 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of carray index > perf_data/carray_index 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of carray interator > perf_data/carray_iterator 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of carray each > perf_data/carray_each 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of carray range > perf_data/carray_range 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of set interator > perf_data/set_iterator 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of set each > perf_data/set_each 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of set range > perf_data/set_range 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of list interator > perf_data/list_iterator 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of list each > perf_data/list_each 2>&1")
-os.popen(perf_ins + " ./bin/gcc-of list range > perf_data/list_range 2>&1")
+perf_ins = "perf stat -B -e cache-references,cache-misses,cycles,instructions,branches --pfm-events FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE,SIMD_FP_256:PACKED_DOUBLE"
+
+compiler_list = ["gcc", "icc", "llvm"]
+container_list = ["vector", "stdarray", "carray", "set", "list"]
+
+for compiler in compiler_list:
+	for container in container_list:
+		if (container!="set" or container!="list"):
+			os.popen(perf_ins + " ./bin/" + compiler + "-of " + container + " index > perf_data/" + compiler + "/" + container + "_index 2>&1")
+		os.popen(perf_ins + " ./bin/" + compiler + "-of " + container + " each > perf_data/" + compiler + "/" + container + "_each 2>&1")
+		os.popen(perf_ins + " ./bin/" + compiler + "-of " + container + " iterator > perf_data/" + compiler + "/" + container + "_iterator 2>&1")
+		os.popen(perf_ins + " ./bin/" + compiler + "-of " + container + " range > perf_data/" + compiler + "/" + container + "_range 2>&1")
+

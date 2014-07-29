@@ -1,6 +1,9 @@
 #!/bin/bash
 mkdir bin
 mkdir perf_data
+mkdir perf_data/gcc
+mkdir perf_data/icc
+mkdir perf_data/llvm
 
 # Compile loop benchmark
 
