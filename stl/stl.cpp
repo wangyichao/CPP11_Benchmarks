@@ -53,16 +53,20 @@ namespace VectorTest{
 	__gnu_parallel::merge(input1.begin(), input1.end(), input2.begin(), input2.end(), std::back_inserter(result2));
   }
 
-  void operation() {
-    accumulate(input1.begin(), input1.end(), 0.0);
-  }
+  /* void operation() { */
+  /*   accumulate(input1.begin(), input1.end(), 0.0); */
+  /* } */
 
   void serial_for_each() {
-	for_each(input1.begin(), input1.end(), operation);
+	int sum = 0;
+	for_each(input1.begin(), input1.end(), [&](int n){sum += n;});
+	r += sum;
   }
 
   void parallel_for_each() {
-	__gnu_parallel::for_each(input1.begin(), input1.end(), operation);
+	int sum = 0;
+	__gnu_parallel::for_each(input2.begin(), input2.end(), [&](int n){sum += n;});
+	r += sum;
   }
 
   double serial_accumulate() {
@@ -71,6 +75,14 @@ namespace VectorTest{
 
   double parallel_accumulate() {
 	return __gnu_parallel::accumulate(result2.begin(), result2.end(), 0.0);
+  }
+
+  void serial_partial_sum() {
+	partial_sum(result1.begin(), result1.end(), result1.begin());
+  }
+  
+  void parallel_partial_sum() {
+	__gnu_parallel::partial_sum(result2.begin(), result2.end(), result2.begin());
   }
 
   void test() {
@@ -121,10 +133,20 @@ namespace VectorTest{
 	r += parallel_accumulate();
     end = chrono::steady_clock::now();
     int elapsed8 = chrono::duration_cast<chrono::microseconds>(end - start).count();
+	
+   	/* float speedup4 = elapsed7 / elapsed8; */
+	
+    start = chrono::steady_clock::now();
+    serial_partial_sum();
+    end = chrono::steady_clock::now();
+    int elapsed9 = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
-	/* float speedup4 = elapsed7 / elapsed8; */
+	start = chrono::steady_clock::now();
+    parallel_partial_sum();
+    end = chrono::steady_clock::now();
+    int elapsed10 = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
-	cout << "std::vector Sort serial " << elapsed1 << endl;
+    cout << "std::vector Sort serial " << elapsed1 << endl;
 	cout << "std::vector Sort parallel " << elapsed2 << endl;
 	/* cout << "std::vectorSort speedup is " << speedup1 << "x" << endl; */
 	cout << "std::vector Merge serial " << elapsed3 << endl;
@@ -136,6 +158,8 @@ namespace VectorTest{
     cout << "std::vector Accumulate serial " << elapsed7 << endl;
 	cout << "std::vector Accumulate parallel " << elapsed8 << endl;
 	/* cout << "std::vector Accumulate speedup is " << speedup4 << "x" << endl; */
+    cout << "std::vector Partial_sum serial " << elapsed7 << endl;
+	cout << "std::vector Partial_sum parallel " << elapsed8 << endl;
   }
 }
 	
@@ -175,24 +199,32 @@ namespace ArrayTest{
 	__gnu_parallel::sort(input2.begin(), input2.end());
   }
 
-  void operation() {
-    accumulate(input1.begin(), input1.end(), 0.0);
-  }
-
   void serial_for_each() {
-	for_each(input1.begin(), input1.end(), operation);
+	int sum = 0;
+	for_each(input1.begin(), input1.end(), [&](int n){sum += n;});
+	r += sum;
   }
 
   void parallel_for_each() {
-	__gnu_parallel::for_each(input1.begin(), input1.end(), operation);
+	int sum = 0;
+	__gnu_parallel::for_each(input2.begin(), input2.end(), [&](int n){sum += n;});
+	r += sum;
   }
 
   double serial_accumulate() {
-    return accumulate(input1.begin(), input1.end(), 0.0);
+    return accumulate(result1.begin(), result1.end(), 0.0);
   }
 
   double parallel_accumulate() {
-	return __gnu_parallel::accumulate(input1.begin(), input1.end(), 0.0);
+	return __gnu_parallel::accumulate(result2.begin(), result2.end(), 0.0);
+  }
+
+  void serial_partial_sum() {
+	partial_sum(result1.begin(), result1.end(), result1.begin());
+  }
+  
+  void parallel_partial_sum() {
+	  __gnu_parallel::partial_sum(result2.begin(), result2.end(), result2.begin());
   }
 
   void test() {
@@ -209,7 +241,7 @@ namespace ArrayTest{
     int elapsed2 = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
 	/* float speedup1 = elapsed1 / elapsed2; */
-
+    
 	start = chrono::steady_clock::now();
 	serial_for_each();
     end = chrono::steady_clock::now();
@@ -220,7 +252,7 @@ namespace ArrayTest{
     end = chrono::steady_clock::now();
     int elapsed6 = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
-	float speedup3 = elapsed5 / elapsed6;
+	/* float speedup3 = elapsed5 / elapsed6; */
 
     start = chrono::steady_clock::now();
 	r += serial_accumulate();
@@ -232,7 +264,17 @@ namespace ArrayTest{
     end = chrono::steady_clock::now();
     int elapsed8 = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
-	float speedup4 = elapsed7 / elapsed8;
+	/* float speedup4 = elapsed7 / elapsed8; */
+	
+    start = chrono::steady_clock::now();
+    serial_partial_sum();
+    end = chrono::steady_clock::now();
+    int elapsed9 = chrono::duration_cast<chrono::microseconds>(end - start).count();
+
+	start = chrono::steady_clock::now();
+    parallel_partial_sum();
+    end = chrono::steady_clock::now();
+    int elapsed10 = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
 	cout << "std::array Sort serial " << elapsed1 << endl;
 	cout << "std::array Sort parallel " << elapsed2 << endl;
@@ -242,6 +284,8 @@ namespace ArrayTest{
 	/* cout << "std::array For_each speedup is " << speedup3 << "x" << endl; */
     cout << "std::array Accumulate serial " << elapsed7 << endl;
 	cout << "std::array Accumulate parallel " << elapsed8 << endl;
+    cout << "std::array Partial_sum serial " << elapsed9 << endl;
+	cout << "std::array Partial_sum parallel " << elapsed10 << endl;
 	/* cout << "std::array Accumulate speedup is " << speedup4 << "x" << endl; */
   }
 }
@@ -276,24 +320,32 @@ namespace ListTest{
 	__gnu_parallel::merge(input1.begin(), input1.end(), input2.begin(), input2.end(), std::back_inserter(result2));
   }
 
-  void operation() {
-    accumulate(input1.begin(), input1.end(), 0.0);
-  }
-
   void serial_for_each() {
-	for_each(input1.begin(), input1.end(), operation);
+	int sum = 0;
+	for_each(input1.begin(), input1.end(), [&](int n){sum += n;});
+	r += sum;
   }
 
   void parallel_for_each() {
-	__gnu_parallel::for_each(input1.begin(), input1.end(), operation);
+	int sum = 0;
+	__gnu_parallel::for_each(input2.begin(), input2.end(), [&](int n){sum += n;});
+	r += sum;
   }
 
   double serial_accumulate() {
-    return accumulate(input1.begin(), input1.end(), 0.0);
+    return accumulate(result1.begin(), result1.end(), 0.0);
   }
 
   double parallel_accumulate() {
-	return __gnu_parallel::accumulate(input1.begin(), input1.end(), 0.0);
+	return __gnu_parallel::accumulate(result2.begin(), result2.end(), 0.0);
+  }
+
+  void serial_partial_sum() {
+	partial_sum(result1.begin(), result1.end(), result1.begin());
+  }
+  
+  void parallel_partial_sum() {
+	  __gnu_parallel::partial_sum(result2.begin(), result2.end(), result2.begin());
   }
 
   void test() {
@@ -332,6 +384,16 @@ namespace ListTest{
 	r += parallel_accumulate();
     end = chrono::steady_clock::now();
     int elapsed8 = chrono::duration_cast<chrono::microseconds>(end - start).count();
+	
+    start = chrono::steady_clock::now();
+    serial_partial_sum();
+    end = chrono::steady_clock::now();
+    int elapsed9 = chrono::duration_cast<chrono::microseconds>(end - start).count();
+
+	start = chrono::steady_clock::now();
+    parallel_partial_sum();
+    end = chrono::steady_clock::now();
+    int elapsed10 = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
 	/* float speedup4 = elapsed7 / elapsed8; */
 
@@ -343,7 +405,9 @@ namespace ListTest{
 	/* cout << "std::list For_each speedup is " << speedup3 << "x" << endl; */
     cout << "std::list Accumulate serial " << elapsed7 << endl;
 	cout << "std::list Accumulate parallel " << elapsed8 << endl;
-	/* cout << "std::list Accumulate speedup is " << speedup4 << "x" << endl; */
+	cout << "std::list Partial_sum serial " << elapsed9 << endl;
+	cout << "std::list Partial_sum parallel " << elapsed10 << endl;
+/* cout << "std::list Accumulate speedup is " << speedup4 << "x" << endl; */
   }
 }
 
@@ -374,8 +438,16 @@ namespace SetTest{
   }
 
   double parallel_accumulate() {
-	return __gnu_parallel::accumulate(input1.begin(), input1.end(), 0.0);
+	return __gnu_parallel::accumulate(input2.begin(), input2.end(), 0.0);
   }
+
+  /* void serial_partial_sum() { */
+	/* partial_sum(input1.begin(), input1.end(), input1.begin()); */
+  /* } */
+  
+  /* void parallel_partial_sum() { */
+	  /* __gnu_parallel::partial_sum(input2.begin(), input2.end(), input2.begin()); */
+  /* } */
 
   void test() {
     init();
@@ -389,12 +461,24 @@ namespace SetTest{
 	r += parallel_accumulate();
     end = chrono::steady_clock::now();
     int elapsed8 = chrono::duration_cast<chrono::microseconds>(end - start).count();
-
+	
 	/* float speedup4 = elapsed7 / elapsed8; */
+
+    /* start = chrono::steady_clock::now(); */
+    /* serial_partial_sum(); */
+    /* end = chrono::steady_clock::now(); */
+    /* int elapsed9 = chrono::duration_cast<chrono::microseconds>(end - start).count(); */
+
+	/* start = chrono::steady_clock::now(); */
+    /* parallel_partial_sum(); */
+    /* end = chrono::steady_clock::now(); */
+    /* int elapsed10 = chrono::duration_cast<chrono::microseconds>(end - start).count(); */
 
     cout << "std::set Accumulate serial " << elapsed7 << endl;
 	cout << "std::set Accumulate parallel " << elapsed8 << endl;
-	/* cout << "std::set Accumulate speedup is " << speedup4 << "x" << endl; */
+	/* cout << "std::set Partial_sum serial " << elapsed9 << endl; */
+	/* cout << "std::set Partial_sum parallel " << elapsed10 << endl; */
+/* cout << "std::set Accumulate speedup is " << speedup4 << "x" << endl; */
   }
 }
 

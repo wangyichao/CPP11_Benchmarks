@@ -4,10 +4,13 @@ import csv
 import sys
 import os
 
+# thread_num = sys.argv[1]
+# os.popen("export OMP_NUM_THREADS="+thread_num)
+
 # Run loop iteration benchmarks
-# loop_gcc_o2 = os.popen("./bin/gcc-o2").read()
-# loop_gcc_o3 = os.popen("./bin/gcc-o3").read()
-# loop_gcc_of = os.popen("./bin/gcc-of").read()
+loop_gcc_o2 = os.popen("./bin/gcc-o2").read()
+loop_gcc_o3 = os.popen("./bin/gcc-o3").read()
+loop_gcc_of = os.popen("./bin/gcc-of").read()
 loop_icc_o2 = os.popen("./bin/icc-o2").read()
 loop_icc_o3 = os.popen("./bin/icc-o3").read()
 loop_icc_of = os.popen("./bin/icc-of").read()
@@ -16,12 +19,12 @@ loop_icc_of = os.popen("./bin/icc-of").read()
 # loop_llvm_of = os.popen("./bin/llvm-of").read()
 
 attribute = [
-	("Container","Algorithm","Version","ICC-O2(ms)","ICC-O3(ms)","ICC-Of(ms)")
+	("Container","Algorithm","Version","GCC-O2(ms)","GCC-O3(ms)","GCC-Of(ms)","ICC-O2(ms)","ICC-O3(ms)","ICC-Of(ms)")
 ]
 
-# gcc_o2_line = loop_gcc_o2.split("\n")
-# gcc_o3_line = loop_gcc_o3.split("\n")
-# gcc_of_line = loop_gcc_of.split("\n")
+gcc_o2_line = loop_gcc_o2.split("\n")
+gcc_o3_line = loop_gcc_o3.split("\n")
+gcc_of_line = loop_gcc_of.split("\n")
 icc_o2_line = loop_icc_o2.split("\n")
 icc_o3_line = loop_icc_o3.split("\n")
 icc_of_line = loop_icc_of.split("\n")
@@ -36,15 +39,12 @@ for item in attribute:
 
 for i in range(len(icc_o2_line)-2):
 	result = [];
-	# result.append(gcc_o2_line[i].split(" ")[0])
-	# result.append(gcc_o2_line[i].split(" ")[1])
-	# result.append(gcc_o2_line[i].split(" ")[2])
-	# result.append(gcc_o2_line[i].split(" ")[3])
-	# result.append(gcc_o3_line[i].split(" ")[3])
-	# result.append(gcc_of_line[i].split(" ")[3])
-	result.append(icc_o2_line[i].split(" ")[0])
-	result.append(icc_o2_line[i].split(" ")[1])
-	result.append(icc_o2_line[i].split(" ")[2])
+	result.append(gcc_o2_line[i].split(" ")[0])
+	result.append(gcc_o2_line[i].split(" ")[1])
+	result.append(gcc_o2_line[i].split(" ")[2])
+	result.append(gcc_o2_line[i].split(" ")[3])
+	result.append(gcc_o3_line[i].split(" ")[3])
+	result.append(gcc_of_line[i].split(" ")[3])
 	result.append(icc_o2_line[i].split(" ")[3])
 	result.append(icc_o3_line[i].split(" ")[3])
 	result.append(icc_of_line[i].split(" ")[3])
