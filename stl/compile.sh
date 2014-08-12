@@ -1,8 +1,6 @@
 #!/bin/bash
 mkdir bin
 
-python generator.py 10000000
-
 # Compile STL benchmark
 g++ -std=c++11 -fopenmp -O2 stl.cpp -o bin/gcc-o2
 g++ -std=c++11 -fopenmp -O3 stl.cpp -o bin/gcc-o3
