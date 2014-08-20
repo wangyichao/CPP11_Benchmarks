@@ -1,0 +1,14 @@
+std::list for_each 10000 21291
+
+ Performance counter stats for './bin/icc-of list each':
+
+           207,055 cache-references                                             [83.55%]
+             2,974 cache-misses              #    1.436 % of all cache refs     [58.78%]
+        57,618,765 cycles                    #    0.000 GHz                     [75.27%]
+        79,325,186 instructions              #    1.38  insns per cycle         [87.66%]
+        11,871,116 branches                                                     [87.65%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [87.66%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [82.50%]
+
+       0.025956018 seconds time elapsed
+

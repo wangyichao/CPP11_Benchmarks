@@ -1,0 +1,14 @@
+std::list C++11_range 10000 21393
+
+ Performance counter stats for './bin/icc-of list range':
+
+           215,309 cache-references                                             [83.63%]
+             2,217 cache-misses              #    1.030 % of all cache refs     [59.05%]
+        58,005,103 cycles                    #    0.000 GHz                     [75.44%]
+        49,940,989 instructions              #    0.86  insns per cycle         [87.72%]
+        11,872,144 branches                                                     [87.72%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [87.72%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [81.90%]
+
+       0.026094659 seconds time elapsed
+

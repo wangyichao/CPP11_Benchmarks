@@ -1,0 +1,14 @@
+std::set C++11_range 10000 104418
+
+ Performance counter stats for './bin/icc-of set range':
+
+         4,081,263 cache-references                                             [85.25%]
+             4,255 cache-misses              #    0.104 % of all cache refs     [58.16%]
+       257,920,578 cycles                    #    0.000 GHz                     [72.34%]
+       215,693,138 instructions              #    0.84  insns per cycle         [86.17%]
+        80,115,168 branches                                                     [86.16%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [86.17%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [84.73%]
+
+       0.109804711 seconds time elapsed
+

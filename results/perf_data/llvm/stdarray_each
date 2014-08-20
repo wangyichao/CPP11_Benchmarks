@@ -1,0 +1,14 @@
+std::array for_each 10000 12662
+
+ Performance counter stats for './bin/llvm-of stdarray each':
+
+            39,173 cache-references                                             [86.55%]
+               887 cache-misses              #    2.264 % of all cache refs     [59.63%]
+        35,250,004 cycles                    #    0.000 GHz                     [73.08%]
+        45,429,022 instructions              #    1.29  insns per cycle         [86.54%]
+         6,069,099 branches                                                     [86.53%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [86.54%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [84.80%]
+
+       0.016548535 seconds time elapsed
+

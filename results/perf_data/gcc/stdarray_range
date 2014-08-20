@@ -1,0 +1,14 @@
+std::array C++11_range 10000 4304
+
+ Performance counter stats for './bin/gcc-of stdarray range':
+
+            39,803 cache-references                                             [84.74%]
+               847 cache-misses              #    2.128 % of all cache refs     [54.20%]
+        15,454,775 cycles                    #    0.000 GHz                     [69.44%]
+        31,543,363 instructions              #    2.04  insns per cycle         [84.72%]
+         3,494,823 branches                                                     [84.71%]
+         4,773,337 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [81.81%]
+
+       0.007947965 seconds time elapsed
+

@@ -1,0 +1,14 @@
+std::array C++11_range 10000 4282
+
+ Performance counter stats for './bin/icc-of stdarray range':
+
+            42,678 cache-references                                             [85.32%]
+             5,697 cache-misses              #   13.349 % of all cache refs     [55.92%]
+        16,082,462 cycles                    #    0.000 GHz                     [70.59%]
+        22,200,747 instructions              #    1.38  insns per cycle         [85.29%]
+         1,867,572 branches                                                     [85.29%]
+         4,666,001 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [80.57%]
+
+       0.008351288 seconds time elapsed
+

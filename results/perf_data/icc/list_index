@@ -1,0 +1,13 @@
+
+ Performance counter stats for './bin/icc-of list index':
+
+            53,369 cache-references                                             [57.90%]
+             2,149 cache-misses              #    4.027 % of all cache refs    
+         5,571,856 cycles                    #    0.000 GHz                    
+         5,747,068 instructions              #    1.03  insns per cycle        
+         1,065,890 branches                                                    
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [48.09%]
+
+       0.003797180 seconds time elapsed
+

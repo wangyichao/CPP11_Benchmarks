@@ -1,0 +1,14 @@
+std::vector for_index 10000 2692
+
+ Performance counter stats for './bin/icc-of vector index':
+
+            52,374 cache-references                                             [81.03%]
+             2,586 cache-misses              #    4.938 % of all cache refs     [55.46%]
+         8,240,155 cycles                    #    0.000 GHz                    
+        15,355,247 instructions              #    1.86  insns per cycle        
+         1,826,102 branches                                                    
+         5,117,663 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [71.69%]
+
+       0.006618318 seconds time elapsed
+

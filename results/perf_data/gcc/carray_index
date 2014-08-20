@@ -1,0 +1,14 @@
+C_array for_index 10000 6344
+
+ Performance counter stats for './bin/gcc-of carray index':
+
+            37,943 cache-references                                             [88.07%]
+               704 cache-misses              #    1.855 % of all cache refs     [64.80%]
+        20,191,383 cycles                    #    0.000 GHz                     [76.52%]
+        35,030,542 instructions              #    1.73  insns per cycle         [88.26%]
+         5,960,377 branches                                                     [88.25%]
+         4,780,925 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [88.26%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [72.18%]
+
+       0.009793407 seconds time elapsed
+

@@ -1,0 +1,14 @@
+std::vector for_index 10000 12670
+
+ Performance counter stats for './bin/llvm-of vector index':
+
+            49,936 cache-references                                             [86.88%]
+             1,061 cache-misses              #    2.125 % of all cache refs     [60.61%]
+        36,153,264 cycles                    #    0.000 GHz                     [73.74%]
+        55,651,438 instructions              #    1.54  insns per cycle         [86.87%]
+        11,097,608 branches                                                     [86.86%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [86.88%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [83.32%]
+
+       0.016462363 seconds time elapsed
+

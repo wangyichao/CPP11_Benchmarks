@@ -1,0 +1,14 @@
+std::vector for_each 10000 12886
+
+ Performance counter stats for './bin/llvm-of vector each':
+
+            60,897 cache-references                                             [86.91%]
+             4,317 cache-misses              #    7.089 % of all cache refs     [60.72%]
+        36,241,592 cycles                    #    0.000 GHz                     [73.81%]
+        70,077,158 instructions              #    1.93  insns per cycle         [86.90%]
+         6,154,636 branches                                                     [86.91%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [86.90%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [79.79%]
+
+       0.016835400 seconds time elapsed
+

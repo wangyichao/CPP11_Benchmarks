@@ -1,0 +1,14 @@
+C_array for_iterator 10000 3196
+
+ Performance counter stats for './bin/llvm-of carray iterator':
+
+            61,380 cache-references                                             [81.79%]
+             3,835 cache-misses              #    6.248 % of all cache refs     [59.87%]
+         9,430,032 cycles                    #    0.000 GHz                    
+        16,615,814 instructions              #    1.76  insns per cycle        
+         3,550,416 branches                                                    
+         5,009,052 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [63.80%]
+
+       0.006662035 seconds time elapsed
+

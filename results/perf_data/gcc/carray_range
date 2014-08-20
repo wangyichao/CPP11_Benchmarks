@@ -1,0 +1,14 @@
+C_array C++11_range 10000 6357
+
+ Performance counter stats for './bin/gcc-of carray range':
+
+            30,131 cache-references                                             [87.84%]
+             4,692 cache-misses              #   15.572 % of all cache refs     [65.37%]
+        20,509,842 cycles                    #    0.000 GHz                     [76.90%]
+        34,963,250 instructions              #    1.70  insns per cycle         [88.45%]
+         5,946,909 branches                                                     [88.46%]
+         4,771,471 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [88.45%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [74.36%]
+
+       0.010020979 seconds time elapsed
+

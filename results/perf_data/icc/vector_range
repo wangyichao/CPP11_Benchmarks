@@ -1,0 +1,14 @@
+std::vector C++11_range 10000 2678
+
+ Performance counter stats for './bin/icc-of vector range':
+
+            52,982 cache-references                                             [80.76%]
+             1,296 cache-misses              #    2.446 % of all cache refs     [42.21%]
+        12,221,883 cycles                    #    0.000 GHz                     [61.48%]
+        13,367,447 instructions              #    1.09  insns per cycle         [80.72%]
+         1,786,554 branches                                                    
+         5,124,689 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [78.82%]
+
+       0.006685582 seconds time elapsed
+

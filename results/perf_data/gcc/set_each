@@ -1,0 +1,14 @@
+std::set for_each 10000 98536
+
+ Performance counter stats for './bin/gcc-of set each':
+
+         4,603,511 cache-references                                             [85.34%]
+             3,456 cache-misses              #    0.075 % of all cache refs     [56.95%]
+       240,679,959 cycles                    #    0.000 GHz                     [72.33%]
+       255,166,438 instructions              #    1.06  insns per cycle         [86.30%]
+        79,961,777 branches                                                     [86.31%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [86.31%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [85.13%]
+
+       0.103541461 seconds time elapsed
+

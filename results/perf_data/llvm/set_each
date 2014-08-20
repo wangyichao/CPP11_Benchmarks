@@ -1,0 +1,14 @@
+std::set for_each 10000 98305
+
+ Performance counter stats for './bin/llvm-of set each':
+
+         4,574,106 cache-references                                             [85.44%]
+             1,939 cache-misses              #    0.042 % of all cache refs     [57.04%]
+       241,106,889 cycles                    #    0.000 GHz                     [72.40%]
+       243,580,772 instructions              #    1.01  insns per cycle         [86.33%]
+        79,653,015 branches                                                     [86.40%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [86.41%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [85.03%]
+
+       0.104015434 seconds time elapsed
+

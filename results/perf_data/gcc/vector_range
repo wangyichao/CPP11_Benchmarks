@@ -1,0 +1,14 @@
+std::vector C++11_range 10000 6355
+
+ Performance counter stats for './bin/gcc-of vector range':
+
+            31,395 cache-references                                             [87.61%]
+             1,061 cache-misses              #    3.380 % of all cache refs     [65.44%]
+        20,549,316 cycles                    #    0.000 GHz                     [76.93%]
+        30,592,369 instructions              #    1.49  insns per cycle         [88.46%]
+         6,048,166 branches                                                     [88.46%]
+         4,762,443 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [88.47%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [76.18%]
+
+       0.010189445 seconds time elapsed
+

@@ -1,0 +1,14 @@
+std::vector for_iterator 10000 3197
+
+ Performance counter stats for './bin/llvm-of vector iterator':
+
+            63,010 cache-references                                             [82.51%]
+             6,768 cache-misses              #   10.741 % of all cache refs     [60.85%]
+         9,712,687 cycles                    #    0.000 GHz                    
+        25,359,395 instructions              #    2.61  insns per cycle        
+         3,619,999 branches                                                    
+         5,006,981 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [63.04%]
+
+       0.007236781 seconds time elapsed
+

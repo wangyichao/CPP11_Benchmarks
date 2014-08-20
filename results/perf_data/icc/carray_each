@@ -1,0 +1,14 @@
+C_array for_each 10000 6447
+
+ Performance counter stats for './bin/icc-of carray each':
+
+            40,875 cache-references                                             [88.25%]
+             6,153 cache-misses              #   15.053 % of all cache refs     [66.31%]
+        21,097,960 cycles                    #    0.000 GHz                     [77.53%]
+        22,882,603 instructions              #    1.08  insns per cycle         [88.77%]
+         1,861,304 branches                                                     [88.75%]
+         9,539,238 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [88.77%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [71.91%]
+
+       0.009998456 seconds time elapsed
+

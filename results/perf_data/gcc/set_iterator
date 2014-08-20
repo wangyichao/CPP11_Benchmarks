@@ -1,0 +1,14 @@
+std::set for_iterator 10000 96022
+
+ Performance counter stats for './bin/gcc-of set iterator':
+
+         4,603,378 cache-references                                             [85.89%]
+             5,815 cache-misses              #    0.126 % of all cache refs     [57.90%]
+       237,223,128 cycles                    #    0.000 GHz                     [71.93%]
+       225,210,735 instructions              #    0.95  insns per cycle         [85.96%]
+        79,914,246 branches                                                     [85.96%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [85.98%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [84.73%]
+
+       0.101150958 seconds time elapsed
+

@@ -1,0 +1,13 @@
+
+ Performance counter stats for './bin/llvm-of list index':
+
+            26,325 cache-references                                            
+             2,618 cache-misses              #    9.945 % of all cache refs    
+         5,027,790 cycles                    #    0.000 GHz                    
+         5,345,511 instructions              #    1.06  insns per cycle        
+           985,181 branches                                                    
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [41.30%]
+
+       0.003327976 seconds time elapsed
+

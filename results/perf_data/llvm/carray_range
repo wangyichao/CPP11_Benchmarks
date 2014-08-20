@@ -1,0 +1,14 @@
+C_array C++11_range 10000 3185
+
+ Performance counter stats for './bin/llvm-of carray range':
+
+            44,670 cache-references                                             [81.84%]
+             6,931 cache-misses              #   15.516 % of all cache refs     [45.48%]
+        12,981,595 cycles                    #    0.000 GHz                     [63.62%]
+        15,321,833 instructions              #    1.18  insns per cycle         [81.82%]
+         3,433,149 branches                                                    
+         5,002,925 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [77.40%]
+
+       0.006865667 seconds time elapsed
+

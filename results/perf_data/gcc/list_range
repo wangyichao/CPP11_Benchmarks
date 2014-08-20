@@ -1,0 +1,14 @@
+std::list C++11_range 10000 21460
+
+ Performance counter stats for './bin/gcc-of list range':
+
+           196,040 cache-references                                             [83.53%]
+             2,728 cache-misses              #    1.392 % of all cache refs     [58.66%]
+        57,453,092 cycles                    #    0.000 GHz                     [75.19%]
+        49,520,104 instructions              #    0.86  insns per cycle         [87.64%]
+        11,787,719 branches                                                     [87.64%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [87.64%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [82.75%]
+
+       0.025665464 seconds time elapsed
+

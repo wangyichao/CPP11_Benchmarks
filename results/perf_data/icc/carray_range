@@ -1,0 +1,14 @@
+C_array C++11_range 10000 2687
+
+ Performance counter stats for './bin/icc-of carray range':
+
+            50,553 cache-references                                             [80.24%]
+               960 cache-misses              #    1.899 % of all cache refs     [53.62%]
+         7,819,277 cycles                    #    0.000 GHz                    
+        11,115,317 instructions              #    1.42  insns per cycle        
+         1,742,470 branches                                                    
+         5,121,354 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [74.03%]
+
+       0.006697144 seconds time elapsed
+

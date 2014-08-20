@@ -1,0 +1,14 @@
+std::array C++11_range 10000 12673
+
+ Performance counter stats for './bin/llvm-of stdarray range':
+
+            40,624 cache-references                                             [86.53%]
+               923 cache-misses              #    2.272 % of all cache refs     [59.58%]
+        35,232,901 cycles                    #    0.000 GHz                     [73.05%]
+        45,426,705 instructions              #    1.29  insns per cycle         [86.53%]
+         6,070,108 branches                                                     [86.53%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [86.51%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [84.61%]
+
+       0.016213333 seconds time elapsed
+

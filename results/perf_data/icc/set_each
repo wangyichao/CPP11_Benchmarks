@@ -1,0 +1,14 @@
+std::set for_each 10000 95147
+
+ Performance counter stats for './bin/icc-of set each':
+
+         4,590,911 cache-references                                             [85.89%]
+             6,421 cache-misses              #    0.140 % of all cache refs     [57.66%]
+       235,807,660 cycles                    #    0.000 GHz                     [71.77%]
+       245,414,207 instructions              #    1.04  insns per cycle         [85.88%]
+        79,962,363 branches                                                     [85.88%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [85.89%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [85.31%]
+
+       0.100597214 seconds time elapsed
+

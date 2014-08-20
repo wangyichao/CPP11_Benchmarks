@@ -1,0 +1,14 @@
+std::array for_iterator 10000 4307
+
+ Performance counter stats for './bin/gcc-of stdarray iterator':
+
+            38,772 cache-references                                             [84.59%]
+               756 cache-misses              #    1.950 % of all cache refs     [53.72%]
+        15,324,835 cycles                    #    0.000 GHz                     [69.13%]
+        27,107,483 instructions              #    1.77  insns per cycle         [84.56%]
+         3,501,410 branches                                                     [84.56%]
+         4,775,737 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [82.47%]
+
+       0.008094913 seconds time elapsed
+

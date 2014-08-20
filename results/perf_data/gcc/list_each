@@ -1,0 +1,14 @@
+std::list for_each 10000 21540
+
+ Performance counter stats for './bin/gcc-of list each':
+
+           207,073 cache-references                                             [83.62%]
+             3,552 cache-misses              #    1.715 % of all cache refs     [58.67%]
+        57,471,495 cycles                    #    0.000 GHz                     [75.20%]
+        78,967,100 instructions              #    1.37  insns per cycle         [87.71%]
+        11,783,348 branches                                                     [87.70%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [87.71%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [82.81%]
+
+       0.026030874 seconds time elapsed
+

@@ -1,0 +1,13 @@
+
+ Performance counter stats for './bin/icc-of set index':
+
+            52,337 cache-references                                             [58.31%]
+             2,065 cache-misses              #    3.946 % of all cache refs    
+         5,590,471 cycles                    #    0.000 GHz                    
+         5,737,435 instructions              #    1.03  insns per cycle        
+         1,064,637 branches                                                    
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [54.89%]
+
+       0.003876106 seconds time elapsed
+

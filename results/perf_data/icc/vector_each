@@ -1,0 +1,14 @@
+std::vector for_each 10000 6440
+
+ Performance counter stats for './bin/icc-of vector each':
+
+            36,891 cache-references                                             [88.06%]
+             2,289 cache-misses              #    6.205 % of all cache refs     [66.28%]
+        21,082,489 cycles                    #    0.000 GHz                     [77.51%]
+        23,221,988 instructions              #    1.10  insns per cycle         [88.75%]
+         1,945,757 branches                                                     [88.76%]
+         9,537,195 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [88.76%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [73.42%]
+
+       0.009995818 seconds time elapsed
+

@@ -1,0 +1,14 @@
+std::set for_iterator 10000 93007
+
+ Performance counter stats for './bin/llvm-of set iterator':
+
+         4,129,178 cache-references                                             [85.69%]
+             5,242 cache-misses              #    0.127 % of all cache refs     [57.06%]
+       232,592,601 cycles                    #    0.000 GHz                     [71.37%]
+       215,405,638 instructions              #    0.93  insns per cycle         [85.68%]
+        79,552,808 branches                                                     [85.68%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [86.61%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [85.61%]
+
+       0.099246289 seconds time elapsed
+

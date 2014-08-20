@@ -1,0 +1,14 @@
+std::list for_iterator 10000 21419
+
+ Performance counter stats for './bin/llvm-of list iterator':
+
+           203,040 cache-references                                             [83.55%]
+             3,860 cache-misses              #    1.901 % of all cache refs     [58.60%]
+        57,351,971 cycles                    #    0.000 GHz                     [75.16%]
+        49,524,155 instructions              #    0.86  insns per cycle         [87.66%]
+        11,793,498 branches                                                     [87.66%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [87.66%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [82.93%]
+
+       0.025961558 seconds time elapsed
+

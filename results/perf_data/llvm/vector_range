@@ -1,0 +1,14 @@
+std::vector C++11_range 10000 3202
+
+ Performance counter stats for './bin/llvm-of vector range':
+
+            41,929 cache-references                                             [81.79%]
+             4,879 cache-misses              #   11.636 % of all cache refs     [45.33%]
+        12,958,762 cycles                    #    0.000 GHz                     [63.53%]
+        26,174,706 instructions              #    2.02  insns per cycle         [81.76%]
+         3,461,805 branches                                                    
+         5,009,735 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [78.37%]
+
+       0.006909267 seconds time elapsed
+

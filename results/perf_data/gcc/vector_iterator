@@ -1,0 +1,14 @@
+std::vector for_iterator 10000 6356
+
+ Performance counter stats for './bin/gcc-of vector iterator':
+
+            33,590 cache-references                                             [87.86%]
+               818 cache-misses              #    2.435 % of all cache refs     [65.39%]
+        20,500,453 cycles                    #    0.000 GHz                     [76.91%]
+        30,595,970 instructions              #    1.49  insns per cycle         [88.45%]
+         6,034,614 branches                                                     [88.45%]
+         4,767,891 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [88.46%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [74.24%]
+
+       0.009981227 seconds time elapsed
+

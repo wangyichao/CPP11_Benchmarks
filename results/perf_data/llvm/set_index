@@ -1,0 +1,13 @@
+
+ Performance counter stats for './bin/llvm-of set index':
+
+            26,174 cache-references                                            
+             1,543 cache-misses              #    5.895 % of all cache refs    
+         4,808,783 cycles                    #    0.000 GHz                    
+         5,336,401 instructions              #    1.11  insns per cycle        
+           983,959 branches                                                    
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [42.25%]
+
+       0.003385262 seconds time elapsed
+

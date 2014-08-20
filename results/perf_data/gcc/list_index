@@ -1,0 +1,13 @@
+
+ Performance counter stats for './bin/gcc-of list index':
+
+            26,521 cache-references                                            
+             1,739 cache-misses              #    6.557 % of all cache refs    
+         5,033,507 cycles                    #    0.000 GHz                    
+         5,346,521 instructions              #    1.06  insns per cycle        
+           986,188 branches                                                    
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [42.05%]
+
+       0.003557354 seconds time elapsed
+

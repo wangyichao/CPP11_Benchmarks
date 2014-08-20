@@ -1,0 +1,14 @@
+C_array for_index 10000 12654
+
+ Performance counter stats for './bin/llvm-of carray index':
+
+            63,209 cache-references                                             [86.59%]
+             1,073 cache-misses              #    1.698 % of all cache refs     [59.73%]
+        35,339,231 cycles                    #    0.000 GHz                     [73.15%]
+        55,205,336 instructions              #    1.56  insns per cycle         [86.57%]
+        10,945,255 branches                                                     [86.56%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [92.87%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [79.73%]
+
+       0.016630504 seconds time elapsed
+

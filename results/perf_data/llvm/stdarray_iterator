@@ -1,0 +1,14 @@
+std::array for_iterator 10000 12668
+
+ Performance counter stats for './bin/llvm-of stdarray iterator':
+
+            59,888 cache-references                                             [86.64%]
+             2,815 cache-misses              #    4.700 % of all cache refs     [59.86%]
+        35,506,011 cycles                    #    0.000 GHz                     [73.23%]
+        45,408,022 instructions              #    1.28  insns per cycle         [86.62%]
+         6,067,440 branches                                                     [86.63%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [92.88%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [79.68%]
+
+       0.016625905 seconds time elapsed
+

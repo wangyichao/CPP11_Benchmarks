@@ -1,0 +1,14 @@
+std::array for_each 10000 4298
+
+ Performance counter stats for './bin/gcc-of stdarray each':
+
+            61,631 cache-references                                             [84.70%]
+               948 cache-misses              #    1.538 % of all cache refs     [54.01%]
+        15,435,314 cycles                    #    0.000 GHz                     [69.33%]
+        27,080,857 instructions              #    1.75  insns per cycle         [84.67%]
+         3,286,140 branches                                                    
+         5,000,039 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [69.26%]
+
+       0.008250661 seconds time elapsed
+

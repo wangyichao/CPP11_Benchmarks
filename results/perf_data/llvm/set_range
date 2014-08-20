@@ -1,0 +1,14 @@
+std::set C++11_range 10000 102446
+
+ Performance counter stats for './bin/llvm-of set range':
+
+         4,027,714 cache-references                                             [85.87%]
+             1,633 cache-misses              #    0.041 % of all cache refs     [57.98%]
+       254,685,751 cycles                    #    0.000 GHz                     [71.98%]
+       215,553,844 instructions              #    0.85  insns per cycle         [85.99%]
+        79,591,726 branches                                                     [85.99%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [85.99%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [84.94%]
+
+       0.108476072 seconds time elapsed
+

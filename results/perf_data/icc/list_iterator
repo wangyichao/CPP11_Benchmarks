@@ -1,0 +1,14 @@
+std::list for_iterator 10000 21746
+
+ Performance counter stats for './bin/icc-of list iterator':
+
+           269,720 cache-references                                             [83.84%]
+             3,435 cache-misses              #    1.274 % of all cache refs     [59.30%]
+        58,359,352 cycles                    #    0.000 GHz                     [75.58%]
+        49,961,842 instructions              #    0.86  insns per cycle         [87.88%]
+        11,878,092 branches                                                     [87.88%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [87.88%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [81.53%]
+
+       0.025807831 seconds time elapsed
+

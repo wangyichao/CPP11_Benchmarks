@@ -1,0 +1,14 @@
+std::list for_each 10000 29729
+
+ Performance counter stats for './bin/llvm-of list each':
+
+           162,582 cache-references                                             [84.66%]
+             3,628 cache-misses              #    2.231 % of all cache refs     [56.80%]
+        74,642,393 cycles                    #    0.000 GHz                     [74.53%]
+        78,670,110 instructions              #    1.05  insns per cycle         [87.66%]
+        11,853,113 branches                                                     [87.72%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [87.72%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [83.41%]
+
+       0.033743861 seconds time elapsed
+

@@ -1,0 +1,14 @@
+std::set C++11_range 10000 95489
+
+ Performance counter stats for './bin/gcc-of set range':
+
+         4,644,391 cache-references                                             [85.88%]
+             5,074 cache-misses              #    0.109 % of all cache refs     [57.67%]
+       235,871,504 cycles                    #    0.000 GHz                     [71.77%]
+       225,166,891 instructions              #    0.95  insns per cycle         [85.89%]
+        79,936,040 branches                                                     [85.88%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [85.89%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [84.75%]
+
+       0.100790617 seconds time elapsed
+

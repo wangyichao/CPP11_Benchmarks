@@ -1,0 +1,14 @@
+std::array for_index 10000 4285
+
+ Performance counter stats for './bin/gcc-of stdarray index':
+
+            48,532 cache-references                                             [84.56%]
+               863 cache-misses              #    1.778 % of all cache refs     [53.64%]
+        15,267,867 cycles                    #    0.000 GHz                     [69.08%]
+        27,042,760 instructions              #    1.77  insns per cycle         [84.54%]
+         3,543,104 branches                                                     [84.52%]
+         5,000,040 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [77.52%]
+
+       0.007502512 seconds time elapsed
+

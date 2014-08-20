@@ -1,0 +1,14 @@
+std::array for_index 10000 4291
+
+ Performance counter stats for './bin/icc-of stdarray index':
+
+            40,611 cache-references                                             [85.02%]
+             1,028 cache-misses              #    2.531 % of all cache refs     [55.06%]
+        15,758,155 cycles                    #    0.000 GHz                     [70.03%]
+        21,694,150 instructions              #    1.38  insns per cycle         [85.00%]
+         1,596,691 branches                                                     [85.01%]
+         4,428,605 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [84.76%]
+
+       0.008492283 seconds time elapsed
+

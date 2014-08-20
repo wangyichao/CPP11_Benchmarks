@@ -1,0 +1,13 @@
+
+ Performance counter stats for './bin/gcc-of set index':
+
+            46,773 cache-references                                             [53.14%]
+             1,833 cache-misses              #    3.919 % of all cache refs    
+         5,007,649 cycles                    #    0.000 GHz                    
+         5,357,174 instructions              #    1.07  insns per cycle        
+           988,116 branches                                                    
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [48.21%]
+
+       0.003519057 seconds time elapsed
+

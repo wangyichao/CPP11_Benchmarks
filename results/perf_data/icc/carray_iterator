@@ -1,0 +1,14 @@
+C_array for_iterator 10000 2667
+
+ Performance counter stats for './bin/icc-of carray iterator':
+
+            54,545 cache-references                                             [80.45%]
+             2,997 cache-misses              #    5.495 % of all cache refs     [55.82%]
+         8,329,368 cycles                    #    0.000 GHz                    
+        11,612,914 instructions              #    1.39  insns per cycle        
+         1,750,586 branches                                                    
+         5,081,282 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [70.09%]
+
+       0.006517212 seconds time elapsed
+

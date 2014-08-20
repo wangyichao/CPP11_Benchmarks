@@ -1,0 +1,14 @@
+std::list C++11_range 10000 21472
+
+ Performance counter stats for './bin/llvm-of list range':
+
+           210,187 cache-references                                             [83.58%]
+             3,663 cache-misses              #    1.743 % of all cache refs     [58.72%]
+        57,548,023 cycles                    #    0.000 GHz                     [75.23%]
+        49,523,050 instructions              #    0.86  insns per cycle         [87.68%]
+        11,793,708 branches                                                     [87.68%]
+                 0 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                    [87.68%]
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [82.65%]
+
+       0.025571663 seconds time elapsed
+

@@ -1,0 +1,14 @@
+C_array for_index 10000 2655
+
+ Performance counter stats for './bin/icc-of carray index':
+
+            63,715 cache-references                                             [81.13%]
+            11,304 cache-misses              #   17.742 % of all cache refs     [60.78%]
+         9,686,864 cycles                    #    0.000 GHz                    
+        12,628,692 instructions              #    1.30  insns per cycle        
+         1,745,300 branches                                                    
+         5,073,790 FP_COMP_OPS_EXE:SSE_FP_PACKED_DOUBLE                                   
+                 0 SIMD_FP_256:PACKED_DOUBLE                                    [60.30%]
+
+       0.007266024 seconds time elapsed
+
